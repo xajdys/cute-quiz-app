@@ -1,3 +1,12 @@
+:root {
+    --burgundy: #790d16;
+    --sand: #e5d3af;
+    --cream: #f5efe1;
+    --sky: #aec4d4;
+    --text: #2b1b1b;
+    --correct: #2e6b4a;
+}
+
 * {
     margin: 0;
     padding: 0;
