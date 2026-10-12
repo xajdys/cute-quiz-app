@@ -1,2 +1,2 @@
-# quiz-app
-A Cute Aesthetic Quiz App 
+# Quiz-App
+A Cute Aesthetic Quiz App
