@@ -1,7 +1,7 @@
-const startScreen = document.querySelector("#screen-start");
-const quizScreen = document.querySelector("#screen-quiz");
-const startBtn = document.querySelector("#btn-start");
-const loading = document.querySelector("#loading");
+const startScreen = document.getElementById("screen-start");
+const quizScreen = document.getElementById("screen-quiz");
+const startBtn = document.getElementById("btn-start");
+
 const questions = [
   {
     text: "Which tag shows how far along a task is?",
@@ -18,10 +18,60 @@ const questions = [
     options: ["<meter>", "<progress>", "<time>", "<dfn>"],
     answer: 0,
   },
+  {
+    text: "Which CSS property is used to tint built-in form controls like range inputs, checkboxes, and progress bars?",
+    options: ["accent-color", "control-tint", "theme-color", "ui-color"],
+    answer: 0,
+  },
+  {
+    text: "Which method is used on a template's content property to create a copy of its nodes?",
+    options: ["copyNode()", "duplicateNode()", "cloneNode()", "renderNode()"],
+    answer: 2,
+  },
+  {
+    text: "What does the 'true' argument inside cloneNode(true) signify?",
+    options: [
+      "To execute embedded scripts automatically",
+      "A deep copy including all child elements",
+      "To trigger CSS animations on clone",
+      "To copy inline event listeners",
+    ],
+    answer: 1,
+  },
+  {
+    text: "Which element is specifically designed to display the result of a calculation or user action?",
+    options: ["<data>", "<output>", "<result>", "<compute>"],
+    answer: 1,
+  },
+  {
+    text: "Which HTML element represents an inert container of content meant to be duplicated via JavaScript?",
+    options: ["<slot>", "<content>", "<template>", "<fragment>"],
+    answer: 2,
+  },
+  {
+    text: "What is the primary semantic difference between <progress> and <meter>?",
+    options: [
+      "<progress> tracks task completion, while <meter> measures a value in a known range",
+      "<meter> is animated by default, while <progress> is static",
+      "<progress> requires a maximum attribute, while <meter> does not",
+      "<meter> represents time duration, while <progress> represents file size",
+    ],
+    answer: 0,
+  },
+  {
+    text: "Which method clears out all children of an element and replaces them with a new set of nodes in a single step?",
+    options: [
+      "innerHTML",
+      "appendChild()",
+      "replaceChildren()",
+      "swapContent()",
+    ],
+    answer: 2,
+  }
 ];
 
-const template = document.querySelector("#question-card");
-const area = document.querySelector("#question-area");
+const template = document.getElementById("question-card");
+const area = document.getElementById("question-area");
 const qNumber = document.getElementById("q-number");
 const progress = document.getElementById("q-progress");
 const meter = document.getElementById("score-meter");
@@ -31,36 +81,35 @@ const skipBtn = document.getElementById("btn-skip");
 
 let current = 0;
 let score = 0;
-let timerLeft = 30;
+let timeLeft = 30;
 let timerId;
 
 function showQuestion() {
   const q = questions[current];
-  const card = template.textContent.cloneNode(true);
+  const card = template.content.cloneNode(true);
 
-  card.querySelector(".q-text").textContent = q.text;
+  card.querySelector(".q-next").textContent = q.text;
   card.querySelectorAll(".opt-text").forEach((span, i) => {
     span.textContent = q.options[i];
   });
-
   card.querySelectorAll("input").forEach((input, i) => {
     input.value = i;
   });
 
   area.replaceChildren(card);
   qNumber.textContent = current + 1;
+  progress.value = current + 1;
   startTimer();
 }
 
 function startTimer() {
   clearInterval(timerId);
-  timerLeft = 30;
-  timerOut.textContent = timerLeft;
-
+  timeLeft = 30;
+  timerOut.textContent = timeLeft;
   timerId = setInterval(() => {
-    timerLeft--;
-    timerOut.textContent = timerLeft;
-    if (timerLeft === 0) goNext();
+    timeLeft--;
+    timerOut.textContent = timeLeft;
+    if (timeLeft === 0) goNext();
   }, 1000);
 }
 
@@ -80,9 +129,9 @@ function goNext() {
 }
 
 startBtn.addEventListener("click", () => {
-  // startScreen.style.animation="slide 0.8s ease-in-out 0.3s";
   startScreen.hidden = true;
   quizScreen.hidden = false;
+  showQuestion();
 });
 
 nextBtn.addEventListener("click", goNext);
