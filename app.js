@@ -2,10 +2,40 @@ const startScreen = document.querySelector("#screen-start");
 const quizScreen = document.querySelector("#screen-quiz");
 const startBtn = document.querySelector("#btn-start");
 const loading = document.querySelector("#loading");
+const questions = [
+  {
+    text: "Which tag shows how far along a task is?",
+    options: ["<meter>", "<progress>", "<output>", "<data>"],
+    answer: 1,
+  },
+  {
+    text: "Which tag stays invisible until JS clones it?",
+    options: ["<slot>", "<noscript>", "<template>", "<base>"],
+    answer: 2,
+  },
+  {
+    text: "Which tag marks a measurement inside a known range?",
+    options: ["<meter>", "<progress>", "<time>", "<dfn>"],
+    answer: 0,
+  },
+];
+
+const template = document.querySelector("#question-card");
+const area = document.querySelector("#question-area");
+const qNumber = document.getElementById("q-number");
+const progress = document.getElementById("q-progress");
+const meter = document.getElementById("score-meter");
+const timerOut = document.getElementById("timer");
+const nextBtn = document.getElementById("btn-next");
+const skipBtn = document.getElementById("btn-skip");
+
+let current = 0;
+let score = 0;
+let timerLeft = 30;
+let timerId;
 
 startBtn.addEventListener("click", () => {
-  startScreen.style.animation="slide 0.8s ease-in-out 0.3s";
+  // startScreen.style.animation="slide 0.8s ease-in-out 0.3s";
   startScreen.hidden = true;
   quizScreen.hidden = false;
-
 });
