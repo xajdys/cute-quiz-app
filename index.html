@@ -11,11 +11,12 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-        <link rel="icon" href="images/logo.png" type="image/png">
+    <link rel="icon" href="images/logo.png" type="image/png">
 </head>
 
 <body>
     <section id="screen-start">
+        <img id="logo" src="images/logo.png">
         <header>
             <hgroup>
                 <h1>Cute Quiz App</h1>
@@ -31,6 +32,17 @@
                 <option value="CSS"></option>
                 <option value="JavaScript"></option>
             </datalist>
+
+            <label for="level">Level</label>
+            <select id="level">
+                <optgroup label="easy">
+                    <option>Beginner</option>
+                </optgroup>
+                <optgroup label="hard">
+                    <option>Intermediate</option>
+                    <option>Advanced</option>
+                </optgroup>
+            </select>
         </search>
     </section>
     <script src="app.js"></script>
