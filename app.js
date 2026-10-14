@@ -1,13 +1,8 @@
-const stBtn = document.querySelector("#start-btn");
-const container = document.querySelector(".container");
+const startScreen = document.querySelector("#screen-start");
+const quizScreen = document.querySelector("#screen-quiz");
+const startBtn = document.querySelector("#btn-start");
 
-const hide = (evt) => {
-  evt.target.classList.add("hide");
-};
-
-const nextSection = (evt) => {
-  container.style.animation = "slide 0.8s ease-in-out 0.3s";
-  container.addEventListener("animationend", hide);
-};
-
-stBtn.addEventListener("click", nextSection);
+startBtn.addEventListener("click", () => {
+  startScreen.hidden = true;
+  quizScreen.hidden = false;
+});
