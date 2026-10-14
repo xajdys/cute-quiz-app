@@ -39,3 +39,21 @@ startBtn.addEventListener("click", () => {
   startScreen.hidden = true;
   quizScreen.hidden = false;
 });
+
+function showQuestion() {
+  const q = questions[current];
+  const card = template.textContent.cloneNode(true);
+
+  card.querySelector(".q-text").textContent = q.text;
+  card.querySelectorAll(".opt-text").forEach((span, i) => {
+    span.textContent = q.options[i];
+  });
+
+  card.querySelectorAll("input").forEach((input, i) => {
+    input.value = i;
+  });
+
+  area.replaceChildren(card);
+  qNumber.textContent = current + 1;
+  startTimer();
+}
