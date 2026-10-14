@@ -18,10 +18,20 @@
     <section id="screen-start">
         <header>
             <hgroup>
-                <h1>WebDev Quiz</h1>
-                <p>10 questions . about 5 minutes</p>
+                <h1>Cute Quiz App</h1>
+                <p>10 webdev questions . about 5 minutes</p>
             </hgroup>
         </header>
+
+        <search>
+            <label for="topic">Topic</label>
+            <input id="topic" list="topic-list" placeholder="Pick or type a topic">
+            <datalist id="topic-list">
+                <option value="HTML"></option>
+                <option value="CSS"></option>
+                <option value="JavaScript"></option>
+            </datalist>
+        </search>
     </section>
     <script src="app.js"></script>
 </body>
