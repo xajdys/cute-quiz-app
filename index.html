@@ -11,21 +11,53 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-        <link rel="icon" href="images/logo.png" type="image/png">
+    <link rel="icon" href="images/logo.png" type="image/png">
 </head>
 
 <body>
-    <section class="welcome-page">
-        <div class="container">
-            <img src="images/logo.png" alt="app logo">
+    <section id="screen-start">
+        <img id="logo" src="images/logo.png">
+        <header>
+            <hgroup>
+                <h1>Cute Quiz App</h1>
+                <p>10 webdev questions . about 5 minutes</p>
+            </hgroup>
+        </header>
 
-            <h1 class="title">Web Dev Quiz</h1>
+        <search>
+            <label for="topic">Topic</label>
+            <input id="topic" list="topic-list" placeholder="Pick or type a topic">
+            <datalist id="topic-list">
+                <option value="HTML"></option>
+                <option value="CSS"></option>
+                <option value="JavaScript"></option>
+            </datalist>
 
-            <p class="text">10 questions on frontend development</p>
+            <label for="level">Level</label>
+            <select id="level">
+                <optgroup label="easy">
+                    <option>Beginner</option>
+                </optgroup>
+                <optgroup label="hard">
+                    <option>Intermediate</option>
+                    <option>Advanced</option>
+                </optgroup>
+            </select>
+        </search>
 
-            <button id="start-btn">Start Quiz</button>
+        <details>
+            <summary>How to play</summary>
+            <p>Press <kbd>1</kbd> to <kbd>4</kbd> to pick an answer. Pass mark: <b>8/10</b>.</p>
+        </details>
 
-        </div>
+        <button id="btn-start">Start Quiz</button>
+        <p><small>No data leves your browser.</small></p>
+
+        <noscript>Please enable JavaScript to play.</noscript>
+    </section>
+
+    <section id="screen-quiz" hidden>
+        <p>Quiz screen coming in the next session.</p>
     </section>
     <script src="app.js"></script>
 </body>
