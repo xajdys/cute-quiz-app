@@ -34,12 +34,6 @@ let score = 0;
 let timerLeft = 30;
 let timerId;
 
-startBtn.addEventListener("click", () => {
-  // startScreen.style.animation="slide 0.8s ease-in-out 0.3s";
-  startScreen.hidden = true;
-  quizScreen.hidden = false;
-});
-
 function showQuestion() {
   const q = questions[current];
   const card = template.textContent.cloneNode(true);
@@ -84,3 +78,12 @@ function goNext() {
     console.log("Quiz finished. Score:", score);
   }
 }
+
+startBtn.addEventListener("click", () => {
+  // startScreen.style.animation="slide 0.8s ease-in-out 0.3s";
+  startScreen.hidden = true;
+  quizScreen.hidden = false;
+});
+
+nextBtn.addEventListener("click", goNext);
+skipBtn.addEventListener("click", goNext);
