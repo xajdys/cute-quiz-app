@@ -1,11 +1,14 @@
 :root {
-  --bg: #fff5f7;       
-  --surface: #ffffff;   /* cards */
-  --text: #3d2c3e;      
-  --primary: #ff8fab;   /* buttons */
-  --accent: #a5d8ff;    /* highlights, progress */
-  --correct: #8ce0b0;   
-  --wrong: #ffb3ba; 
+    --bg: #fff5f7;
+    --surface: #ffffff;
+    /* cards */
+    --text: #3d2c3e;
+    --primary: #ff8fab;
+    /* buttons */
+    --accent: #a5d8ff;
+    /* highlights, progress */
+    --correct: #8ce0b0;
+    --wrong: #ffb3ba;
 }
 
 .poppins-medium {
@@ -29,6 +32,14 @@ body {
     align-items: center;
     height: 100dvh;
     text-align: center;
+    max-width: 40rem;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+label {
+    display: block;
+    margin-top: 1rem;
 }
 
 .hide {
@@ -36,7 +47,7 @@ body {
 }
 
 img {
-    width: 80%;
+    width: 40%;
     border-radius: 12px;
 }
 
@@ -50,17 +61,6 @@ img {
     }
 }
 
-.title {
-    color: var(--burgundy);
-    font-size: 2rem;
-}
-
-.text {
-    color: var(--text);
-    font-size: 1.1rem;
-    margin: 2rem 0 1rem 0;
-}
-
 button {
     background-color: var(--primary);
     color: var(--text);
@@ -71,13 +71,7 @@ button {
     font-size: 1rem;
 }
 
-.container {
-    width: 60dvw;
-    max-width: 480px;
-    border: 1px solid var(--burgundy);
-    padding: 1rem;
-    border-radius: 12px;
-}
+
 
 button:hover {
     background-color: #5e0a11;
