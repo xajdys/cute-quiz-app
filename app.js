@@ -69,3 +69,18 @@ function startTimer() {
     if (timerLeft === 0) goNext();
   }, 1000);
 }
+
+function goNext() {
+  const picked = document.querySelector('input[name="answer"]:checked');
+  if (picked && Number(picked.value) === questions[current].answer) {
+    score++;
+    meter.value = score;
+  }
+  current++;
+  if (current < questions.length) {
+    showQuestion();
+  } else {
+    clearInterval(timerId);
+    console.log("Quiz finished. Score:", score);
+  }
+}
