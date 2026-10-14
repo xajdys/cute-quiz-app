@@ -75,9 +75,20 @@
         <button id="btn-next">Next</button>
 
         <p>Score so far:
-            <meter id="score-meter" min="0" max="10" value="0">0 of 10</meter>
+            <meter id="score-meter" min="0" max="10" value="0" low="3" high="7" optimum="10">0 of 10</meter>
         </p>
     </section>
+
+    <template id="question-card">
+            <h2 class="q-next"></h2>
+            <fieldset>
+                <legend>Choose one</legend>
+                <label><input type="radio" name="answer"><span class="opt-text"></span></label>
+                <label><input type="radio" name="answer"><span class="opt-text"></span></label>
+                <label><input type="radio" name="answer"><span class="opt-text"></span></label>
+                <label><input type="radio" name="answer"><span class="opt-text"></span></label>
+            </fieldset>
+        </template>
     <script src="app.js"></script>
 </body>
 
