@@ -57,3 +57,15 @@ function showQuestion() {
   qNumber.textContent = current + 1;
   startTimer();
 }
+
+function startTimer() {
+  clearInterval(timerId);
+  timerLeft = 30;
+  timerOut.textContent = timerLeft;
+
+  timerId = setInterval(() => {
+    timerLeft--;
+    timerOut.textContent = timerLeft;
+    if (timerLeft === 0) goNext();
+  }, 1000);
+}
