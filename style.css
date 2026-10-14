@@ -71,9 +71,31 @@ button {
     font-size: 1rem;
 }
 
-
-
 button:hover {
-    background-color: #5e0a11;
+    background-color: hsl(345, 100%, 75%);
     cursor: pointer;
+}
+
+progress, meter{
+    width: 100%;
+    height: 1rem;
+    accent-color: var(--primary);
+}
+
+fieldset{
+    border: 2px solid var(--accent);
+    border-radius: 1rem;
+    background-color: var(--surface);
+}
+
+fieldset label{
+    display: block;
+    padding: 0.5rem;
+}
+
+menu{
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 0.5rem;
 }
