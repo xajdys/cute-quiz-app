@@ -16,7 +16,7 @@
 
 <body>
     <section id="screen-start">
-        <img id="logo" src="images/logo.png">
+        <img id="logo" src="images/logo.png" alt="Cute Quiz App Logo">
         <header>
             <hgroup>
                 <h1>Cute Quiz App</h1>
@@ -51,14 +51,44 @@
         </details>
 
         <button id="btn-start">Start Quiz</button>
-        <p><small>No data leves your browser.</small></p>
+        <p><small>No data leaves your browser.</small></p>
 
         <noscript>Please enable JavaScript to play.</noscript>
     </section>
 
     <section id="screen-quiz" hidden>
-        <p>Quiz screen coming in the next session.</p>
+        <!-- <p id="loading">Quiz screen loading...</p> -->
+
+        <header>
+            <p>Question <output id="q-number">1</output> of 10</p>
+            <label for="q-progress">Progress</label>
+            <progress id="q-progress" value="1" max="10">1 of 10</progress>
+            <p>Time left: <output id="timer">30</output>s</p>
+        </header>
+
+        <div id="question-area"></div>
+
+        <menu>
+            <li><button id="btn-skip">Skip</button></li>
+        </menu>
+
+        <button id="btn-next">Next</button>
+
+        <p>Score so far:
+            <meter id="score-meter" min="0" max="10" value="0" low="3" high="7" optimum="10">0 of 10</meter>
+        </p>
     </section>
+
+    <template id="question-card">
+            <h2 class="q-next"></h2>
+            <fieldset>
+                <legend>Choose one</legend>
+                <label><input type="radio" name="answer"><span class="opt-text"></span></label>
+                <label><input type="radio" name="answer"><span class="opt-text"></span></label>
+                <label><input type="radio" name="answer"><span class="opt-text"></span></label>
+                <label><input type="radio" name="answer"><span class="opt-text"></span></label>
+            </fieldset>
+        </template>
     <script src="app.js"></script>
 </body>
 
