@@ -101,18 +101,18 @@ menu{
     gap: 0.5rem;
 }
 
-#screen-start {
-  width: min(100%, 24rem);
+.card {
+  width: min(100%, 28rem);
   background: var(--surface);
   border-radius: 1.5rem;
   padding: 2rem 1.5rem;
   box-shadow: 0 8px 24px rgba(255, 143, 171, 0.25);
-  text-align: center;
   flex-direction: column;
-  align-items: center;
   gap: 1.25rem;
 }
-#screen-start:not([hidden]) { display: flex; }
+.card:not([hidden]) { display: flex; }
+
+#screen-start { text-align: center; align-items: center; }
 
 #logo { width: 4.5rem; height: auto; }
 
@@ -139,4 +139,20 @@ input:focus, select:focus {
 details { width: 100%; text-align: left; }
 summary { cursor: pointer; }
 
-button { cursor: pointer; }
+#screen-quiz header { display: grid; gap: 0.5rem; }
+#screen-quiz header p, menu { margin: 0; }
+
+.q-text { margin: 0 0 0.75rem; font-size: 1.15rem; }
+
+fieldset label {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  padding: 0.6rem 0.8rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+}
+fieldset label:has(input:checked) { background: var(--accent); }
+
+.actions { display: flex; justify-content: space-between; align-items: center; }
+#btn-skip { background: transparent; border: 2px solid var(--primary); }
