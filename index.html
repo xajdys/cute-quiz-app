@@ -89,6 +89,35 @@
             <label><input type="radio" name="answer"><span class="opt-text"></span></label>
         </fieldset>
     </template>
+
+    <section id="screen-results" class="card" hidden>
+        <h2>You scored <output id="final-score">0/10</output></h2>
+        <p id="verdict"></p>
+
+        <canvas id="score-chart" width="240" height="240" role="img" aria-label="Donut chart of correct, wrong and skipped answers"></canvas>
+
+        <table>
+            <caption>Your answers</caption>
+            <colgroup>
+            <col class="col-num">
+            <col>
+            <col class="col-result">
+            </colgroup>
+
+            <thead>
+                <tr>
+                    <th scope="col">No.</th>
+                    <th scope="col">Question</th>
+                    <th scope="col">Result</th>
+                </tr>
+            </thead>
+
+            <tbody id="results-body"></tbody>
+        </table>
+
+        <p>Finished <time id="finished-at"></time></p>
+        <button id="btn-retry">Retry</button>
+    </section>
     <script src="app.js"></script>
 </body>
 
