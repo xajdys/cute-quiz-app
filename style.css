@@ -81,6 +81,11 @@ button:hover {
     cursor: pointer;
 }
 
+button:focus-visible {
+    outline: 3px solid var(--text);
+    outline-offset: 3px;
+}
+
 progress,
 meter {
     width: 100%;
