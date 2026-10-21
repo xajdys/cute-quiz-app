@@ -148,7 +148,14 @@ startBtn.addEventListener("click", () => {
 });
 
 nextBtn.addEventListener("click", goNext);
-skipBtn.addEventListener("click", goNext);
+
+skipBtn.addEventListener("click", () => {
+    document
+        .querySelectorAll('input[name="answer"]')
+        .forEach(input => input.checked = false);
+
+    goNext();
+});
 
 function finishQuiz() {
   clearInterval(timerId);
