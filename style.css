@@ -25,17 +25,18 @@
 }
 
 body {
-    background-color: var(--bg);
-    color: var(--text);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100dvh;
-    text-align: center;
-    max-width: 40rem;
-    margin: 2rem auto;
-    padding: 0 1rem;
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  box-sizing: border-box;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Poppins", system-ui, sans-serif;
 }
+
+input, select, button { font: inherit; }
 
 label {
     display: block;
@@ -99,3 +100,43 @@ menu{
     display: flex;
     gap: 0.5rem;
 }
+
+#screen-start {
+  width: min(100%, 24rem);
+  background: var(--surface);
+  border-radius: 1.5rem;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 8px 24px rgba(255, 143, 171, 0.25);
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+#screen-start:not([hidden]) { display: flex; }
+
+#logo { width: 4.5rem; height: auto; }
+
+#screen-start h1 { margin: 0; }
+#screen-start hgroup p { margin: 0.25rem 0 0; }
+
+search { width: 100%; display: grid; gap: 0.35rem; }
+search label { margin-top: 0.5rem; text-align: left; font-weight: 500; }
+
+input, select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.6rem 1rem;
+  border: 2px solid var(--accent);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--text);
+}
+input:focus, select:focus {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
+
+details { width: 100%; text-align: left; }
+summary { cursor: pointer; }
+
+button { cursor: pointer; }
