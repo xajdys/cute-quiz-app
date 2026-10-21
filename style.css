@@ -41,10 +41,6 @@ label {
     margin-top: 1rem;
 }
 
-.hide {
-    display: none;
-}
-
 img {
     width: 40%;
     border-radius: 12px;
@@ -58,6 +54,10 @@ img {
     100% {
         transform: translateX(-100dvw);
     }
+}
+
+.slide-out {
+    animation: slide 0.5s ease-in-out forwards;
 }
 
 button {
