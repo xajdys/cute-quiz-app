@@ -1,6 +1,16 @@
 const startScreen = document.getElementById("screen-start");
 const quizScreen = document.getElementById("screen-quiz");
 const startBtn = document.getElementById("btn-start");
+const resultsScreen = document.getElementById("screen-results");
+const finalScore = document.getElementById("final-score");
+const verdict = document.getElementById("verdict");
+const chart = document.getElementById("score-chart");
+const resultsBody = document.getElementById("results-body");
+const finishedAt = document.getElementById("finished-at");
+const retryBtn = document.getElementById("btn-retry");
+
+const PASS_MARK = 8;
+let results = [];
 
 const questions = [
   {
@@ -92,9 +102,6 @@ function showQuestion() {
   card.querySelectorAll(".opt-text").forEach((span, i) => {
     span.textContent = q.options[i];
   });
-  card.querySelectorAll("input").forEach((input, i) => {
-    input.value = i;
-  });
 
   area.replaceChildren(card);
   qNumber.textContent = current + 1;
@@ -129,10 +136,99 @@ function goNext() {
 }
 
 startBtn.addEventListener("click", () => {
-  startScreen.hidden = true;
-  quizScreen.hidden = false;
-  showQuestion();
+  startScreen.classList.add("slide-out");
+
+    startScreen.addEventListener("animationend", () => {
+        startScreen.hidden = true;
+        startScreen.classList.remove("slide-out");
+        quizScreen.hidden = false;
+        showQuestion();
+    }, { once: true });
+
 });
 
 nextBtn.addEventListener("click", goNext);
 skipBtn.addEventListener("click", goNext);
+
+function finishQuiz() {
+  clearInterval(timerId);
+  quizScreen.hidden = true;
+  resultsScreen.hidden = false;
+
+  finalScore.textContent = `${score}/${questions.length}`;
+  verdict.textContent = score >= PASS_MARK ? "Passed! 🎉" : "Keep practicing 🌱";
+
+  const now = new Date();
+  finishedAt.dateTime = now.toISOString();
+  finishedAt.textContent = now.toLocaleString();
+
+  renderTable();
+  drawChart();
+}
+
+function renderTable() {
+  const rows = results.map((r) => {
+    const tr = document.createElement("tr");
+    const numTd = document.createElement("td");
+    const textTd = document.createElement("td");
+    const resTd = document.createElement("td");
+    const data = document.createElement("data");
+
+    numTd.textContent = r.number;
+    textTd.textContent = r.text;
+    data.value = r.status === "correct" ? 1 : 0;
+    data.dataset.state = r.status;
+    data.textContent = r.status;
+
+    resTd.append(data);
+    tr.append(numTd, textTd, resTd);
+    return tr;
+  });
+  resultsBody.replaceChildren(...rows);
+}
+
+function drawChart() {
+  const ctx = chart.getContext("2d");
+  const css = getComputedStyle(document.documentElement);
+  const colors = {
+    correct: css.getPropertyValue("--correct").trim(),
+    wrong: css.getPropertyValue("--wrong").trim(),
+    skipped: css.getPropertyValue("--accent").trim(),
+  };
+
+  const counts = { correct: 0, wrong: 0, skipped: 0 };
+  results.forEach((r) => counts[r.status]++);
+
+  const cx = chart.width / 2;
+  const cy = chart.height / 2;
+  let start = -Math.PI / 2;
+
+  ctx.clearRect(0, 0, chart.width, chart.height);
+  ctx.lineWidth = 30;
+
+  for (const key in counts) {
+    if (counts[key] === 0) continue;
+    const slice = (counts[key] / results.length) * Math.PI * 2;
+    ctx.beginPath();
+    ctx.arc(cx, cy, 90, start, start + slice);
+    ctx.strokeStyle = colors[key];
+    ctx.stroke();
+    start += slice;
+  }
+
+  ctx.fillStyle = css.getPropertyValue("--text").trim();
+  ctx.font = "600 32px Poppins, sans-serif";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText(`${score}/${results.length}`, cx, cy);
+}
+
+retryBtn.addEventListener("click", () => {
+  current = 0;
+  score = 0;
+  results = [];
+  meter.value = 0;
+  resultsScreen.hidden = true;
+  quizScreen.hidden = false;
+  showQuestion();
+});
