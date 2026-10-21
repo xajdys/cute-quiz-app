@@ -120,20 +120,38 @@ function startTimer() {
   }, 1000);
 }
 
+
 function goNext() {
   const picked = document.querySelector('input[name="answer"]:checked');
-  if (picked && Number(picked.value) === questions[current].answer) {
+  const q = questions[current];
+
+  let status = "skipped";
+
+  if (picked) {
+    status = Number(picked.value) === q.answer ? "correct" : "wrong";
+  }
+
+  if (status === "correct") {
     score++;
     meter.value = score;
   }
+
+  results.push({
+    number: current + 1,
+    text: q.text,
+    status: status
+  });
+
   current++;
+
   if (current < questions.length) {
     showQuestion();
   } else {
     clearInterval(timerId);
-    console.log("Quiz finished. Score:", score);
+    finishQuiz();
   }
 }
+
 
 startBtn.addEventListener("click", () => {
   startScreen.classList.add("slide-out");
